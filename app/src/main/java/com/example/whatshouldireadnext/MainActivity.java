@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //https://stackoverflow.com/questions/6343166/how-to-fix-android-os-networkonmainthreadexception
-        String webPage = "http://www.google.ie";
+        String webPage = "https://www.google.ie";
 
         String html = "not null";
        try {
