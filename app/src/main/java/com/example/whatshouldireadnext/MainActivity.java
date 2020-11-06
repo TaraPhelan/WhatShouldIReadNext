@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
 
             //this creates a string with details of the random book returned from the GoodReads link
+            //link modified from https://medium.com/@kjbrazil/goodreads-random-next-book-selection-f6c6b325b273
             String webPage = "https://www.goodreads.com/review/list?v=2&key=FqPAOyWHR78g8gQjLHOg&id=46330375&shelf=to-read&sort=random&per_page=1";
             String html;
             try {
