@@ -2,6 +2,7 @@ package com.example.whatshouldireadnext;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -16,17 +17,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //https://stackoverflow.com/questions/6343166/how-to-fix-android-os-networkonmainthreadexception
-        String webPage = "https://www.google.ie";
+        new LongRunningTask().execute( );
+    }
 
-        String html = "not null";
-       try {
-           html = Jsoup.connect(webPage).get().html();
-       } catch (IOException e) {
-           html = String.valueOf(e);
+    //This Async Task is used because networking activity can not take place on the main activity thread for performance reasons
+    private static class LongRunningTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            //this creates a string with details of the random book returned from the GoodReads link
+            String webPage = "https://www.goodreads.com/review/list?v=2&key=FqPAOyWHR78g8gQjLHOg&id=46330375&shelf=to-read&sort=random&per_page=1";
+            String html;
+            try {
+                html = Jsoup.connect(webPage).get().html();
+            } catch (IOException e) {
+                html = String.valueOf(e);
+            }
+
+            //This creates a new string to contain the book's title
+            int firstIndex = html.indexOf("<title>");
+            Log.i("Console", "First occurrence of <title>"+
+                    " is found at : " + firstIndex);
+            int secondIndex = html.indexOf("</title>");
+            Log.i("Console", "First occurrence of </title>"+
+                    " is found at : " + secondIndex);
+            Log.i("Console", html.substring(firstIndex+7, secondIndex));
+
+
+            Log.i("Console", html);
+            return null;
         }
-
-        Log.i("Console", html);
     }
 
 }
