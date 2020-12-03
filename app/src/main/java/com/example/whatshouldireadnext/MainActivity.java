@@ -37,13 +37,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //This creates a new string to contain the book's title
-            int firstIndex = html.indexOf("<title>");
+            int firstTitleIndex = html.indexOf("<title>");
             Log.i("Console", "First occurrence of <title>"+
-                    " is found at : " + firstIndex);
-            int secondIndex = html.indexOf("</title>");
+                    " is found at : " + firstTitleIndex);
+            int secondTitleIndex = html.indexOf("</title>");
             Log.i("Console", "First occurrence of </title>"+
-                    " is found at : " + secondIndex);
-            Log.i("Console", html.substring(firstIndex+7, secondIndex));
+                    " is found at : " + secondTitleIndex);
+            Log.i("Console", html.substring(firstTitleIndex+7, secondTitleIndex));
+
+            //This creates a new string to contain the book's author
+            //TODO: remove whitespace at the start of the created String
+            int firstAuthorIndex = html.indexOf("<name>");
+            Log.i("Console", "First occurrence of <name>"+
+                    " is found at : " + firstAuthorIndex);
+            int secondAuthorIndex = html.indexOf("</name>");
+            Log.i("Console", "First occurrence of </name>"+
+                    " is found at : " + secondAuthorIndex);
+            Log.i("Console", html.substring(firstAuthorIndex+7, secondAuthorIndex));
 
 
             Log.i("Console", html);
