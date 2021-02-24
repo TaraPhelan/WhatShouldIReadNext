@@ -43,17 +43,28 @@ public class MainActivity extends AppCompatActivity {
             int secondTitleIndex = html.indexOf("</title>");
             Log.i("Console", "First occurrence of </title>"+
                     " is found at : " + secondTitleIndex);
-            Log.i("Console", html.substring(firstTitleIndex+7, secondTitleIndex));
+            String title = html.substring(firstTitleIndex+7, secondTitleIndex);
+            Log.i("Console", title);
 
             //This creates a new string to contain the book's author
-            //TODO: remove whitespace at the start of the created String
             int firstAuthorIndex = html.indexOf("<name>");
             Log.i("Console", "First occurrence of <name>"+
                     " is found at : " + firstAuthorIndex);
             int secondAuthorIndex = html.indexOf("</name>");
             Log.i("Console", "First occurrence of </name>"+
                     " is found at : " + secondAuthorIndex);
-            Log.i("Console", html.substring(firstAuthorIndex+7, secondAuthorIndex));
+            String author = html.substring(firstAuthorIndex+14, secondAuthorIndex);
+            Log.i("Console", author);
+
+            //This creates a new string to contain the book's link
+            int firstLinkIndex = html.indexOf("<link>");
+            Log.i("Console", "First occurrence of <link>"+
+                    " is found at : " + firstLinkIndex);
+            int secondLinkIndex = html.indexOf("</link>");
+            Log.i("Console", "First occurrence of </link>"+
+                    " is found at : " + secondLinkIndex);
+            String link = html.substring(firstLinkIndex+11, secondLinkIndex);
+            Log.i("Console", link);
 
 
             Log.i("Console", html);
