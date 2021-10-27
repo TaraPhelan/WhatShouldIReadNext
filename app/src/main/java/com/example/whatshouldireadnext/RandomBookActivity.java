@@ -1,6 +1,8 @@
 package com.example.whatshouldireadnext;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -27,7 +29,6 @@ public class RandomBookActivity extends AppCompatActivity {
         authorTextView = findViewById(R.id.text_author);
         linkTextView = findViewById(R.id.text_link);
 
-        // TODO: finish watching https://www.youtube.com/watch?v=QfQE1ayCzf8 re UI updating on Thread completion
         ExampleRunnable exampleRunnable = new ExampleRunnable();
         new Thread(exampleRunnable).start();
     }
@@ -83,6 +84,16 @@ public class RandomBookActivity extends AppCompatActivity {
 
             // Prints all the returned HTML to the console
             Log.i(TAG, html);
+
+            // Updates TextViews with random book info
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    titleTextView.setText(title);
+                    authorTextView.setText(author);
+                    linkTextView.setText(link);
+                }
+            });
         }
     }
 }
