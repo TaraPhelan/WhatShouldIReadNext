@@ -1,8 +1,6 @@
 package com.example.whatshouldireadnext;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.widget.TextView;
 

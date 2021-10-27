@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">What Should I Read Next</string>
+    <string name="goodreads_user_id">Goodreads User ID</string>
     <string name="random_book">Random Book</string>
+    <string name="save">Save</string>
 </resources>
